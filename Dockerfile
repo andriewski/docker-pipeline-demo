@@ -6,11 +6,11 @@ COPY ./gradlew gradlew
 COPY ./settings.gradle settings.gradle
 COPY ./build.gradle .
 COPY ./src src
-RUN ./gradlew clean build
-RUN mkdir -p build/dependency
+RUN adduser -S demo && chown -R demo gradlew
+USER demo
+RUN ./gradlew clean build && mkdir -p build/dependency
 WORKDIR build/dependency
 RUN jar -xf ../libs/*.jar
-
 
 FROM openjdk:8-jdk-alpine
 ARG DEPENDENCY=/workspace/app/build/dependency
