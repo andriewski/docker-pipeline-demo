@@ -1,12 +1,12 @@
 FROM openjdk:8-jdk-alpine as build
 WORKDIR /workspace/app
 
-COPY .gradle .gradle
-COPY gradle gradle
-COPY gradlew gradlew
-COPY settings.gradle settings.gradle
-COPY build.gradle .
-COPY src src
+COPY ./.gradle .gradle
+COPY ./gradle gradle
+COPY ./gradlew gradlew
+COPY ./settings.gradle settings.gradle
+COPY ./build.gradle .
+COPY ./src src
 RUN ./gradlew clean build
 RUN mkdir -p build/dependency
 WORKDIR build/dependency
