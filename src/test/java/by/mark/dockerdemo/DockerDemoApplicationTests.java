@@ -8,6 +8,7 @@ class DockerDemoApplicationTests {
 
     @Test
     void contextLoads() {
+        if (true) throw new RuntimeException();
     }
 
 }
